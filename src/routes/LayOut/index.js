@@ -20,11 +20,12 @@ const menus = [
 ];
 
 const manageChildMenus = [
-  ['customer', '/customer', '客户', 'user'],
+  ['custer', '/custer', '客户', 'user'],
   ['product', '/product', '商品', 'inbox'],
   ['supplier', '/supplier', '供应商', 'team'],
 ];
 const routeKey = sessionStorage.getItem('routeKey') || 'home';
+const routeOpenKey = sessionStorage.getItem('routeOpenKey') || '';
 
 class LayOut extends React.Component {
   state = {
@@ -36,6 +37,16 @@ class LayOut extends React.Component {
     });
   }
 
+  changeIsOpen(opkey) {
+    console.log('opkey',opkey)
+    if (opkey.length == 2) {
+      sessionStorage.setItem('routeOpenKey', opkey[1])
+    } else if (opkey.length == 1) {
+      sessionStorage.setItem('routeOpenKey', opkey[0])
+    }
+
+  }
+
   render() {
     return (
       <Layout style={{height: '100%'}}>
@@ -45,7 +56,8 @@ class LayOut extends React.Component {
           collapsed={this.state.collapsed}
         >
           <div className="logo"/>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[routeKey]}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[routeKey]} defaultOpenKeys={[routeOpenKey]}
+                onOpenChange={this.changeIsOpen}>
             {
               menus.map(([key, path, text, icon], index) => {
                   if (key == 'manage') {

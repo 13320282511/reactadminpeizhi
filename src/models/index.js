@@ -9,7 +9,7 @@ export default {
 
   subscriptions: {
     setup({dispatch, history}) {  // eslint-disable-line
-      history.listen(location=> {
+      history.listen(location => {
         dispatch({
           type: 'updateActiveIndex',
           payload: location.pathname
@@ -33,16 +33,25 @@ export default {
       let activeIndex = 0;
       if (/order/.test(pathname)) {
         activeIndex = 1;
-        sessionStorage.setItem('routeKey','order');
+        // sessionStorage.setItem('routeOpenKey', '');
+        sessionStorage.setItem('routeKey', 'order');
       } else if (/home/.test(pathname)) {
-        sessionStorage.setItem('routeKey','home');
+        // sessionStorage.setItem('routeOpenKey', '');
+        sessionStorage.setItem('routeKey', 'home');
         activeIndex = 2;
       } else if (/stock/.test(pathname)) {
         activeIndex = 3;
       } else if (/funds/.test(pathname)) {
         activeIndex = 4;
       } else if (/manage/.test(pathname)) {
+        // sessionStorage.setItem('routeOpenKey', 'manage');
         activeIndex = 5;
+      } else if (/supplier/.test(pathname)) {
+        sessionStorage.setItem('routeKey', 'supplier');
+        activeIndex = 5;
+      }else if (/custer/.test(pathname)) {
+        sessionStorage.setItem('routeKey', 'custer');
+        activeIndex = 6;
       } else {
         activeIndex = 0;
       }

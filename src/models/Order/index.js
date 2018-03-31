@@ -1,4 +1,4 @@
-
+import { query} from '../../services/order';
 export default {
 
   namespace: 'order',
@@ -15,6 +15,9 @@ export default {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
+    *requestOrder({payload},{call,put}) {
+      yield call(query)
+    }
   },
 
   reducers: {

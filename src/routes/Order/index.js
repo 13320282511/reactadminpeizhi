@@ -4,6 +4,9 @@ import { connect } from 'dva';
 class Order extends React.Component {
   constructor(props){
     super(props);
+    this.props.dispatch({
+      type:'order/requestOrder'
+    });
   }
   render() {
     return (
