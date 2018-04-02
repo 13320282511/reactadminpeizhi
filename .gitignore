@@ -14,5 +14,6 @@ npm-debug.log*
 
 /coverage
 /.idea
-/.roadhogrc
 yarn.lock
+yarn-error.log
+package-lock.json
